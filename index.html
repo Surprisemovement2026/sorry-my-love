@@ -1,0 +1,856 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f9eafa">
+
+<title>I'm Sorry, My Love ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Poppins:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --pink: #e9a9c2;
+  --rose: #d68cae;
+  --purple: #a99bd9;
+  --deep: #685477;
+  --gold: #c9a77c;
+  --cream: #fffafd;
+  --text: #75677b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+}
+
+.hero {
+  min-height: 100svh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 70px 20px;
+
+  background:
+    radial-gradient(circle at 15% 20%, #f9dce9 0, transparent 36%),
+    radial-gradient(circle at 85% 80%, #e6defb 0, transparent 38%),
+    linear-gradient(135deg, #fffafd, #fbf2ff);
+}
+
+.content {
+  width: 100%;
+  max-width: 760px;
+  position: relative;
+  z-index: 2;
+  animation: enter 1.5s ease both;
+}
+
+.eyebrow {
+  color: #b58eaf;
+  font-size: 10px;
+  letter-spacing: 5px;
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(58px, 10vw, 100px);
+  line-height: .95;
+  font-weight: 400;
+  color: #765c83;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 400;
+  color: #b17eaa;
+}
+
+.script {
+  font-family: 'Great Vibes', cursive;
+  font-size: 37px;
+  color: #c18bb0;
+}
+
+.intro {
+  max-width: 510px;
+  margin: 20px auto 30px;
+  font-size: 13px;
+  line-height: 2.1;
+  font-weight: 300;
+}
+
+.heart {
+  font-size: 38px;
+  color: #d993b8;
+  display: inline-block;
+  animation: heartbeat 2s infinite;
+}
+
+/* BUTTONS */
+
+.primary-btn {
+  padding: 15px 34px;
+  border: 1px solid #d5a5c6;
+  border-radius: 50px;
+  color: white;
+  background: linear-gradient(120deg, #d89ab9, #a99bd9);
+  font-size: 11px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px #b58dbb35;
+  transition: .35s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px #b58dbb55;
+}
+
+.secondary-btn {
+  padding: 12px 26px;
+  border: 1px solid #d5a5c6;
+  border-radius: 30px;
+  background: transparent;
+  color: #a77fae;
+  cursor: pointer;
+  font-size: 11px;
+  transition: .3s;
+}
+
+.secondary-btn:hover {
+  background: #f7e8f2;
+}
+
+/* ENVELOPE */
+
+.envelope-area {
+  margin: 25px auto 30px;
+  perspective: 1000px;
+}
+
+.envelope {
+  width: min(280px, 75vw);
+  height: 180px;
+  position: relative;
+  margin: auto;
+  background: #e9b8d1;
+  border-radius: 5px;
+  box-shadow: 0 15px 35px #9d76a035;
+  cursor: pointer;
+}
+
+.envelope:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #f5d5e6, #dba9cc);
+  clip-path: polygon(0 0, 50% 58%, 100% 0);
+  transform-origin: top;
+  transition: transform .9s ease;
+  z-index: 3;
+}
+
+.envelope:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(35deg, #d99fca, #f3d1e5);
+  clip-path: polygon(0 100%, 50% 42%, 100% 100%);
+  z-index: 2;
+}
+
+.envelope.open:before {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.letter-inside {
+  position: absolute;
+  left: 10%;
+  width: 80%;
+  height: 140px;
+  top: 18px;
+  background: #fffafd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 4px;
+  z-index: 1;
+  transition: transform 1s ease;
+}
+
+.envelope.open .letter-inside {
+  transform: translateY(-105px);
+}
+
+.letter-inside span {
+  font-family: 'Great Vibes', cursive;
+  color: #b77da8;
+  font-size: 28px;
+}
+
+.envelope-heart {
+  position: absolute;
+  top: 67px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  font-size: 31px;
+  color: white;
+  text-shadow: 0 2px 10px #b37da0;
+  transition: opacity .4s;
+}
+
+.envelope.open .envelope-heart {
+  opacity: 0;
+}
+
+.hint {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #a58ba9;
+  margin-top: 15px;
+}
+
+/* SECTIONS */
+
+section {
+  padding: 95px 20px;
+}
+
+.section-inner {
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: #bc91b6;
+  margin-bottom: 15px;
+}
+
+.section-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(38px, 7vw, 58px);
+  font-weight: 400;
+  color: #765c83;
+  margin-bottom: 25px;
+}
+
+/* LETTER */
+
+.letter-section {
+  background: linear-gradient(140deg, #fffafd, #f8edfa);
+}
+
+.letter-card {
+  max-width: 680px;
+  margin: auto;
+  padding: 45px 35px;
+  background: rgba(255,255,255,.8);
+  border: 1px solid #ead8eb;
+  border-radius: 18px;
+  box-shadow: 0 15px 50px #a88caf15;
+}
+
+.letter-card p {
+  font-size: 13px;
+  line-height: 2.3;
+  font-weight: 300;
+  color: #786a7d;
+  margin-bottom: 18px;
+}
+
+.letter-signature {
+  font-family: 'Great Vibes', cursive;
+  font-size: 39px;
+  color: #c18bb0;
+  margin-top: 25px;
+}
+
+/* MEMORIES */
+
+.memories-section {
+  background: #fffafd;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 40px;
+}
+
+.photo-card {
+  overflow: hidden;
+  border-radius: 15px;
+  background: #f4e9f4;
+  box-shadow: 0 12px 30px #a88caf18;
+  transition: transform .4s;
+}
+
+.photo-card:hover {
+  transform: translateY(-7px);
+}
+
+.photo-card img {
+  width: 100%;
+  height: 290px;
+  display: block;
+  object-fit: cover;
+  transition: transform .6s;
+}
+
+.photo-card:hover img {
+  transform: scale(1.06);
+}
+
+.photo-caption {
+  padding: 15px 10px;
+  font-family: 'Cormorant Garamond', serif;
+  color: #a67ba6;
+  font-size: 21px;
+}
+
+/* QUESTION */
+
+.question-section {
+  background:
+    radial-gradient(circle at 20% 20%, #f8d9e9, transparent 45%),
+    radial-gradient(circle at 80% 80%, #e4dafa, transparent 45%),
+    #fcf5ff;
+}
+
+.question-heart {
+  font-size: 65px;
+  color: #d991b7;
+  animation: heartbeat 2s infinite;
+  margin-bottom: 20px;
+}
+
+.question-text {
+  max-width: 620px;
+  margin: 20px auto 30px;
+  line-height: 2;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.final-response {
+  display: none;
+  margin: 30px auto 0;
+  max-width: 550px;
+  padding: 25px;
+  background: #ffffffb8;
+  border: 1px solid #ead8eb;
+  border-radius: 15px;
+  animation: reveal 1s ease both;
+}
+
+.final-response .script {
+  margin-bottom: 10px;
+}
+
+/* PETALS */
+
+.petal {
+  position: absolute;
+  top: -35px;
+  width: 12px;
+  height: 19px;
+  background: linear-gradient(135deg, #f4c4db, #dca6d6);
+  border-radius: 80% 10% 80% 10%;
+  opacity: .7;
+  pointer-events: none;
+  animation: fall linear infinite;
+}
+
+.floating-heart {
+  position: fixed;
+  z-index: 10;
+  pointer-events: none;
+  color: #d99abd;
+  animation: floatAway 2s ease-out forwards;
+}
+
+.footer {
+  padding: 30px 15px;
+  text-align: center;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #ad94ad;
+  background: #fffafd;
+}
+
+/* ANIMATIONS */
+
+@keyframes enter {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(25px) scale(.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.16); }
+}
+
+@keyframes fall {
+  0% { transform: translateY(-10vh) rotate(0); }
+  100% { transform: translateY(115vh) rotate(500deg); }
+}
+
+@keyframes floatAway {
+  0% {
+    opacity: 1;
+    transform: translate(0,0) scale(.6);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x),var(--y)) scale(1.7);
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:650px) {
+  section { padding: 70px 18px; }
+
+  .gallery {
+    grid-template-columns: 1fr;
+    max-width: 370px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .photo-card img {
+    height: 310px;
+  }
+
+  .letter-card {
+    padding: 30px 20px;
+  }
+
+  .letter-card p {
+    font-size: 12px;
+  }
+
+  .eyebrow {
+    letter-spacing: 3px;
+  }
+
+  .intro {
+    font-size: 12px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC FILE -->
+<audio id="romanticMusic" loop preload="auto">
+  <source src="romantic-music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- HERO -->
+<header class="hero">
+
+  <div class="content">
+
+    <div class="eyebrow">A LITTLE MESSAGE FROM MY HEART</div>
+
+    <div class="heart">♡</div>
+
+    <h1>I'm Sorry,<br>My Love</h1>
+
+    <p class="intro">
+      I know things haven't been perfect lately...
+      But there is something I really want you to know.
+      Something that comes straight from my heart.
+    </p>
+
+    <div class="envelope-area">
+
+      <div class="envelope" id="envelope" onclick="openEnvelope()">
+
+        <div class="letter-inside">
+          <span>For You ♡</span>
+          <small style="color:#ad8cab;font-size:9px;">
+            A letter from my heart
+          </small>
+        </div>
+
+        <div class="envelope-heart">♥</div>
+
+      </div>
+
+      <div class="hint" id="envelopeHint">
+        TAP THE ENVELOPE TO OPEN
+      </div>
+
+    </div>
+
+    <button class="primary-btn" onclick="startExperience()">
+      READ MY HEART ♡
+    </button>
+
+  </div>
+
+</header>
+
+
+<!-- APOLOGY LETTER -->
+<section class="letter-section" id="letter">
+
+  <div class="section-inner">
+
+    <div class="section-label">WORDS I WISH I COULD SAY</div>
+
+    <h2 class="section-heading">
+      A Message From My Heart
+    </h2>
+
+    <div class="letter-card">
+
+      <p>My Dearest Love, ♡</p>
+
+      <p>
+        Sometimes, even when we love someone with all our heart,
+        we make mistakes. And sometimes, our words or actions
+        hurt the very person we never wanted to hurt.
+      </p>
+
+      <p>
+        I know I may have made you sad, and I wish I could
+        turn back time and make things right.
+      </p>
+
+      <p>
+        You mean more to me than my pride, more than any argument,
+        and more than any misunderstanding.
+      </p>
+
+      <p>
+        I don't want a silly argument to become a wall between us.
+        I miss your smile, your laughter, and all those little
+        moments that make being with you so special.
+      </p>
+
+      <p>
+        I'm not perfect, but my feelings for you are real.
+        I promise to listen better, understand more, and try
+        harder to make you feel loved and appreciated.
+      </p>
+
+      <p>
+        I don't expect everything to become perfect in a moment.
+        I just hope we can talk, understand each other,
+        and make things beautiful again.
+      </p>
+
+      <p>
+        I'm truly sorry, my love.
+        You are precious to me, more than words can explain.
+      </p>
+
+      <div class="letter-signature">
+        Forever With You ♡
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PHOTO MEMORIES -->
+<section class="memories-section">
+
+  <div class="section-inner">
+
+    <div class="section-label">LITTLE MOMENTS, BIG MEMORIES</div>
+
+    <h2 class="section-heading">
+      Our Beautiful Memories
+    </h2>
+
+    <p class="intro">
+      No matter how many little arguments we have,
+      the beautiful memories we made will always
+      mean something special to me.
+    </p>
+
+    <div class="gallery">
+
+      <div class="photo-card">
+        <img src="images/memory1.jpg"
+             alt="Our beautiful memory"
+             loading="lazy">
+        <div class="photo-caption">Our Little World ♡</div>
+      </div>
+
+      <div class="photo-card">
+        <img src="images/memory2.jpg"
+             alt="A special moment together"
+             loading="lazy">
+        <div class="photo-caption">My Favourite Moments</div>
+      </div>
+
+      <div class="photo-card">
+        <img src="images/memory3.jpg"
+             alt="A precious memory"
+             loading="lazy">
+        <div class="photo-caption">Always Special</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FINAL QUESTION -->
+<section class="question-section">
+
+  <div class="section-inner">
+
+    <div class="question-heart">♡</div>
+
+    <div class="section-label">ONE LAST THING...</div>
+
+    <h2 class="section-heading">
+      Can We Make Things Right Again?
+    </h2>
+
+    <p class="question-text">
+      I know an apology cannot erase everything,
+      but I hope it can be the beginning of something better.
+
+      I still believe in us, in our happiness,
+      and in all the beautiful moments waiting ahead.
+    </p>
+
+    <button class="primary-btn" onclick="showFinalMessage()">
+      A LITTLE ANSWER FOR YOU ♡
+    </button>
+
+    <div class="final-response" id="finalResponse">
+      <div class="script">Thank You For Reading My Heart ♡</div>
+
+      <p style="font-size:12px;line-height:2;">
+        Whatever you feel, take your time.
+        You deserve to be heard, understood,
+        and treated with love.
+        <br><br>
+        I'll be here when you're ready to talk. 🤍
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  MADE WITH LOVE · JUST FOR YOU ♡
+</footer>
+
+
+<script>
+
+/* FLOATING PETALS */
+
+const hero = document.querySelector('.hero');
+
+for (let i = 0; i < 24; i++) {
+
+  const petal = document.createElement('div');
+
+  petal.className = 'petal';
+
+  petal.style.left = Math.random() * 100 + '%';
+
+  petal.style.animationDuration =
+    (8 + Math.random() * 10) + 's';
+
+  petal.style.animationDelay =
+    (-Math.random() * 15) + 's';
+
+  hero.appendChild(petal);
+
+}
+
+
+/* ENVELOPE OPENING */
+
+let envelopeOpened = false;
+
+function openEnvelope() {
+
+  if (envelopeOpened) return;
+
+  envelopeOpened = true;
+
+  const envelope = document.getElementById('envelope');
+
+  envelope.classList.add('open');
+
+  document.getElementById('envelopeHint').textContent =
+    'A LITTLE MESSAGE JUST FOR YOU ♡';
+
+  createHearts(15);
+
+}
+
+
+/* START EXPERIENCE AND MUSIC */
+
+let musicStarted = false;
+
+async function startExperience() {
+
+  const music = document.getElementById('romanticMusic');
+
+  if (!musicStarted) {
+
+    try {
+
+      music.volume = 0.55;
+
+      await music.play();
+
+      musicStarted = true;
+
+    } catch (error) {
+
+      console.log('Music playback failed:', error);
+
+      alert(
+        'Please check that romantic-music.mp3 is uploaded correctly.'
+      );
+
+    }
+
+  }
+
+  openEnvelope();
+
+  createHearts(30);
+
+  document.getElementById('letter').scrollIntoView({
+    behavior: 'smooth'
+  });
+
+}
+
+
+/* FLOATING HEART CELEBRATION */
+
+function createHearts(count) {
+
+  const symbols = ['♡', '♥', '✧', '❤'];
+
+  for (let i = 0; i < count; i++) {
+
+    const heart = document.createElement('span');
+
+    heart.className = 'floating-heart';
+
+    heart.textContent =
+      symbols[Math.floor(Math.random() * symbols.length)];
+
+    heart.style.left = '50%';
+
+    heart.style.top = '50%';
+
+    heart.style.fontSize =
+      (15 + Math.random() * 20) + 'px';
+
+    heart.style.setProperty(
+      '--x',
+      (Math.random() - 0.5) * window.innerWidth + 'px'
+    );
+
+    heart.style.setProperty(
+      '--y',
+      (Math.random() - 0.5) * window.innerHeight + 'px'
+    );
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 2100);
+
+  }
+
+}
+
+
+/* FINAL QUESTION */
+
+function showFinalMessage() {
+
+  const response =
+    document.getElementById('finalResponse');
+
+  response.style.display = 'block';
+
+  createHearts(35);
+
+  response.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center'
+  });
+
+}
+
+</script>
+
+</body>
+</html>
